@@ -7,15 +7,16 @@ library(dplyr)
 
 # In which month was the average departure delay the greatest?
 # Hint: you'll have to perform a grouping operation before summarizing your data
+flights <- data.frame(flights)
 
-
+greatest.dep.delay <- flights %>% group_by(month) %>% summarise(delay = mean(dep_delay, na.rm = TRUE ))
 # If you create a data.frame with the columns "month", and "delay" above, you should be able to create 
 # a scatterplot by passing it to the 'plot' function
-
+plot(greatest.dep.delay)
 
 # In which airport were the average arrival delays the highest?
 # Hint: you'll have to perform a grouping operation before summarizing your data
-
+highest.arr.delay <- flights %>% group_by(dest) %>% summarise(delay = max(mean(arr_delay, na.rm = TRUE)))
 
 ### Bonus ###
 # Which city was flown to with the highest average speed?
